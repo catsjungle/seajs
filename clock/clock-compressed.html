@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+	#clockBox{width:300px;height:300px;margin:100px auto;border:1px solid #000;border-radius:50%;position:relative;}
+	#hour{width:12px;height:35px;background:#000;position:absolute;left:50%;top:50%;margin-left:-6px;margin-top:-35px;
+		-webkit-transform-origin:center bottom;
+		-moz-transform-origin:center bottom;
+		-ms-transform-origin:center bottom;
+		-o-transform-origin:center bottom;
+		transform-origin:center bottom;
+	}
+	#min{width:6px;height:70px;background:#000;position:absolute;left:50%;top:50%;margin-left:-3px;margin-top:-70px;
+		-webkit-transform-origin:center bottom;
+		-moz-transform-origin:center bottom;
+		-ms-transform-origin:center bottom;
+		-o-transform-origin:center bottom;
+		transform-origin:center bottom;
+	}
+	#sec{width:2px;height:120px;background:#000;position:absolute;left:50%;top:50%;margin-left:-1px;margin-top:-120px;
+		-webkit-transform-origin:center bottom;
+		-moz-transform-origin:center bottom;
+		-ms-transform-origin:center bottom;
+		-o-transform-origin:center bottom;
+		transform-origin:center bottom;
+	}
+	#cir{width:16px;height:16px;background:#000;border-radius:50%;position:absolute;top:50%;left:50%;margin-top:-8px;margin-left:-8px;}
+	#clockBox span{display:block;width:2px;height:18px;background:#000;position:absolute;left:50%;margin-left:-1px;
+		-webkit-transform-origin:center 150px;
+		-moz-transform-origin:center 150px;
+		-ms-transform-origin:center bottom;
+		-o-transform-origin:center bottom;
+		transform-origin:center 150px;
+	}
+	#clockBox span.intc{display:block;width:4px;height:25px;background:#000;position:absolute;left:50%;margin-left:-2px;}
+	#clockBox span em{width:100px;font-style:normal;text-align:center;position:absolute;left:50%;top:30px;margin-left:-50px;}
+</style>
+<script>
+function setStyle(e,t,n){var r=t.split("-"),i="";for(var s=0;s<r.length;s++)i+=r[s].charAt(0).toUpperCase()+r[s].substring(1);e.style["Webkit"+i]=n,e.style["Moz"+i]=n,e.style["ms"+i]=n,e.style["O"+i]=n,e.style[i]=n}window.onload=function(){function o(){var e=new Date,t=e.getHours(),n=e.getMinutes(),o=e.getSeconds();setStyle(r,"transform","rotate("+t*30+"deg)"),setStyle(i,"transform","rotate("+n*6+"deg)"),setStyle(s,"transform","rotate("+o*6+"deg)")}var e=document.getElementById("clockBox");for(var t=0;t<60;t++){var n=document.createElement("span");t%5==0?(n.className="intc",t==0?n.innerHTML="<em>12</em>":n.innerHTML="<em>"+t/5+"</em>",setStyle(n.children[0],"transform","rotate(-"+t*6+"deg)")):n.className="",e.appendChild(n),setStyle(n,"transform","rotate("+t*6+"deg)")}var r=document.getElementById("hour"),i=document.getElementById("min"),s=document.getElementById("sec");setInterval(o,1e3),o()}
+</script>
+</head>
+<body>
+    <div id="clockBox">
+    	<div id="hour"></div>
+    	<div id="min"></div>
+    	<div id="sec"></div>
+    	<div id="cir"></div>
+    </div>
+</body>
+</html>
